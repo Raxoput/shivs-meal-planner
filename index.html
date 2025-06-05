@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Shiv's Meal Planner</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍎</text></svg>">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      /* Basic scrollbar styling for better aesthetics with Tailwind dark theme */
+      ::-webkit-scrollbar {
+        width: 8px;
+        height: 8px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #1e293b; /* slate-800 */
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #475569; /* slate-600 */
+        border-radius: 4px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #64748b; /* slate-500 */
+      }
+    </style>
+    <!-- The importmap is removed as Vite handles module resolution during development and build -->
+
+<link rel="stylesheet" href="/index.css">
+<script type="importmap">
+{
+  "imports": {
+    "react": "https://esm.sh/react@^19.1.0",
+    "react-dom/": "https://esm.sh/react-dom@^19.1.0/",
+    "react/": "https://esm.sh/react@^19.1.0/",
+    "lucide-react": "https://esm.sh/lucide-react@^0.513.0",
+    "vite": "https://esm.sh/vite@^6.3.5",
+    "@vitejs/plugin-react": "https://esm.sh/@vitejs/plugin-react@^4.5.1",
+    "path": "https://esm.sh/path@^0.12.7"
+  }
+}
+</script>
+  <script type="module" crossorigin src="/shivs-meal-planner/assets/index-BKU6w_ps.js"></script>
+</head>
+  <body class="bg-slate-900">
+    <div id="root"></div>
+    <!-- Vite expects the main entry point here, typically in an 'src' directory -->
+</body>
+</html>

@@ -1,0 +1,7 @@
+
+{
+  "name": "Shiv's Meal Planner",
+  "description": "A personal meal planner application that allows users to plan meals, search for food items, and track nutritional information. Data can be saved to a local file or the browser's internal storage.",
+  "requestFramePermissions": [],
+  "prompt": ""
+}

@@ -1,0 +1,208 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@400;500;600;700;800&display=swap');
+
+:root {
+  --font-heading: 'Poppins', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  --font-body: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+body {
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: #e2e8f0; /* slate-200 */
+}
+
+h1, h2, h3, h4, h5, h6, .font-heading {
+  font-family: var(--font-heading);
+}
+
+/* Custom focus outline for accessibility */
+*:focus-visible {
+  outline: 2px solid #38bdf8; /* sky-400 */
+  outline-offset: 2px;
+  border-radius: 2px; /* Slight rounding for the outline itself */
+}
+
+/* Keyframe Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn { /* For modal */
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+
+@keyframes pulseGentle {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.03);
+  }
+}
+
+@keyframes slideInTopRight {
+  from {
+    opacity: 0;
+    transform: translate(50%, -50%);
+  }
+  to {
+    opacity: 1;
+    transform: translate(0, 0);
+  }
+}
+
+@keyframes ingredientEnter {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes ingredientExit {
+  from {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+}
+
+
+/* Animation Utility Classes */
+.animate-fadeInUp {
+  animation: fadeInUp 0.5s ease-out forwards;
+}
+.animate-fadeIn {
+  animation: fadeIn 0.3s ease-out forwards;
+}
+
+.animate-pulse-gentle-hover:hover {
+  animation: pulseGentle 1.5s infinite;
+}
+
+.animate-slideInTopRight {
+  animation: slideInTopRight 0.4s ease-out forwards;
+}
+
+.ingredient-row-enter {
+  animation: ingredientEnter 0.4s ease-out forwards;
+}
+.ingredient-row-exit {
+  animation: ingredientExit 0.4s ease-out forwards;
+}
+
+
+/* General Button Styling */
+button, .button {
+  transition: all 0.2s ease-in-out;
+}
+button:hover, .button:hover {
+  filter: brightness(1.1);
+}
+button:active, .button:active {
+  transform: scale(0.98);
+  filter: brightness(0.95);
+}
+
+/* Base Input Styling */
+input[type="text"], input[type="number"], input[type="email"], input[type="password"], select, textarea {
+    transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+/* Style for the custom file input button (if used) */
+.custom-file-input::-webkit-file-upload-button {
+  visibility: hidden;
+}
+.custom-file-input::before {
+  content: 'Choose File';
+  display: inline-block;
+  background: #0ea5e9; /* sky-500 */
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 0.375rem; /* rounded-md */
+  cursor: pointer;
+  font-weight: 500; /* medium */
+  margin-right: 0.5rem;
+}
+.custom-file-input:hover::before {
+  background: #0284c7; /* sky-600 */
+}
+
+/* Meal Energy Aura */
+.meal-aura {
+  transition: box-shadow 0.5s ease-in-out;
+}
+.meal-aura-low { /* Low calorie: cool blue */
+  box-shadow: 0 0 20px 0px rgba(59, 130, 246, 0.3); /* blue-500 */
+}
+.meal-aura-medium { /* Medium calorie: warm yellow/orange */
+  box-shadow: 0 0 22px 2px rgba(245, 158, 11, 0.35); /* amber-500 */
+}
+.meal-aura-high { /* High calorie: energetic red/deep orange */
+  box-shadow: 0 0 25px 4px rgba(239, 68, 68, 0.4); /* red-500 */
+}
+
+/* Donut Chart Styling */
+.donut-chart-segment {
+  /* transition properties are now inline for dynamic delay */
+  transform-origin: center;
+}
+.donut-chart-text {
+  /* font-size, font-weight, fill are now inline for dynamic sizing */
+  text-anchor: middle;
+  /* dominant-baseline: central; /* Handled by dy for better cross-browser */
+  transition: opacity 0.3s ease-in-out;
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: rgba(51, 65, 85, 0.5); /* slate-700 with opacity */
+  border-radius: 2.5px;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: #64748b; /* slate-500 */
+  border-radius: 2.5px;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8; /* slate-400 */
+}
+
+/* Apply custom scrollbar to textareas too */
+textarea.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+}
+textarea.custom-scrollbar::-webkit-scrollbar-track {
+  background: #1e293b; /* slate-800 */
+  border-radius: 3px;
+}
+textarea.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: #475569; /* slate-600 */
+  border-radius: 3px;
+}
+textarea.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #64748b; /* slate-500 */
+}

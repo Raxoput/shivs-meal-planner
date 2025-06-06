@@ -1,19 +1,21 @@
 export interface Ingredient {
   id: string;
   name: string;
-  calories100g: number | string; // string to allow empty input
+  calories100g: number | string; 
   protein100g: number | string;
   fat100g: number | string;
   carbs100g: number | string;
   grams: number | string;
-  source?: 'USDA' | 'OpenFoodFacts'; // Optional: to track where it came from
+  source?: 'USDA' | 'OpenFoodFacts'; // Removed 'AI (Estimate)'
+  isNew?: boolean; 
+  isRemoving?: boolean; 
 }
 
 export interface Meal {
   id: string;
   name: string;
   ingredients: Ingredient[];
-  createdAt: number; // Store as timestamp (Date.now())
+  createdAt: number; 
 }
 
 export interface NutrientTotals {
@@ -26,7 +28,7 @@ export interface NutrientTotals {
 // For USDA API responses
 export interface UsdaFoodNutrient {
   nutrientId: number;
-  nutrientNumber?: string; 
+  nutrientNumber?: string;
   nutrientName: string;
   value: number;
   unitName: string;
@@ -37,13 +39,13 @@ export interface UsdaFoodItem {
   description: string;
   dataType?: string;
   foodNutrients: UsdaFoodNutrient[];
-  source?: 'USDA'; // To distinguish from OpenFoodFactsItem
+  source?: 'USDA'; 
 }
 
 // For Open Food Facts API responses
 export interface OpenFoodFactsNutriments {
   'energy-kcal_100g'?: number | string;
-  energy_100g?: number | string; // Sometimes energy is in kJ
+  energy_100g?: number | string; 
   proteins_100g?: number | string;
   fat_100g?: number | string;
   carbohydrates_100g?: number | string;
@@ -59,7 +61,17 @@ export interface OpenFoodFactsItem {
   nutriments: OpenFoodFactsNutriments;
   serving_size?: string;
   countries_tags?: string[];
-  source?: 'OpenFoodFacts'; // To distinguish from UsdaFoodItem
+  source?: 'OpenFoodFacts';
 }
 
 export type SearchResultItem = UsdaFoodItem | OpenFoodFactsItem;
+
+// For Shopping List
+export interface ShoppingListItem {
+  id: string;
+  ingredientName: string;
+  quantity: string; // e.g., "250g" or "1 unit"
+  mealNames: string; // Comma-separated list of meal names
+  checked: boolean;
+  source?: Ingredient['source']; // To show source icon in shopping list
+}

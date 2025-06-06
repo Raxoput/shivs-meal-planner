@@ -1,3 +1,4 @@
+
 {
   "compilerOptions": {
     "types": ["vite/client"],
@@ -25,7 +26,7 @@
     "noUncheckedSideEffectImports": true,
 
     "paths": {
-      "@/*" :  ["./*"]
+      "@/*" :  ["./src/*"]
     }
   }
 }

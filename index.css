@@ -10,6 +10,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #e2e8f0; /* slate-200 */
+  font-size: 17px; /* Increased base font size */
 }
 
 h1, h2, h3, h4, h5, h6, .font-heading {
@@ -25,184 +26,95 @@ h1, h2, h3, h4, h5, h6, .font-heading {
 
 /* Keyframe Animations */
 @keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
 }
-
-@keyframes fadeIn { /* For modal */
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
-
-
 @keyframes pulseGentle {
-  0%, 100% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.03);
-  }
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.03); }
 }
-
 @keyframes slideInTopRight {
-  from {
-    opacity: 0;
-    transform: translate(50%, -50%);
-  }
-  to {
-    opacity: 1;
-    transform: translate(0, 0);
-  }
+  from { opacity: 0; transform: translate(30%, -30%); }
+  to { opacity: 1; transform: translate(0, 0); }
 }
-
 @keyframes ingredientEnter {
-  from {
-    opacity: 0;
-    transform: translateX(-20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
+  from { opacity: 0; transform: translateX(-15px); }
+  to { opacity: 1; transform: translateX(0); }
 }
-
 @keyframes ingredientExit {
-  from {
-    opacity: 1;
-    transform: translateX(0);
-  }
-  to {
-    opacity: 0;
-    transform: translateX(20px);
-  }
+  from { opacity: 1; transform: translateX(0); }
+  to { opacity: 0; transform: translateX(15px); }
 }
-
 
 /* Animation Utility Classes */
-.animate-fadeInUp {
-  animation: fadeInUp 0.5s ease-out forwards;
-}
-.animate-fadeIn {
-  animation: fadeIn 0.3s ease-out forwards;
-}
-
-.animate-pulse-gentle-hover:hover {
-  animation: pulseGentle 1.5s infinite;
-}
-
-.animate-slideInTopRight {
-  animation: slideInTopRight 0.4s ease-out forwards;
-}
-
-.ingredient-row-enter {
-  animation: ingredientEnter 0.4s ease-out forwards;
-}
-.ingredient-row-exit {
-  animation: ingredientExit 0.4s ease-out forwards;
-}
-
+.animate-fadeInUp { animation: fadeInUp 0.4s ease-out forwards; }
+.animate-fadeIn { animation: fadeIn 0.25s ease-out forwards; }
+.animate-pulse-gentle-hover:hover { animation: pulseGentle 1.5s infinite; }
+.animate-slideInTopRight { animation: slideInTopRight 0.35s ease-out forwards; }
+.ingredient-row-enter { animation: ingredientEnter 0.3s ease-out forwards; }
+.ingredient-row-exit { animation: ingredientExit 0.3s ease-out forwards; }
 
 /* General Button Styling */
-button, .button {
-  transition: all 0.2s ease-in-out;
-}
-button:hover, .button:hover {
-  filter: brightness(1.1);
-}
-button:active, .button:active {
-  transform: scale(0.98);
-  filter: brightness(0.95);
-}
+button, .button { transition: all 0.15s ease-in-out; }
+button:hover, .button:hover { filter: brightness(1.1); }
+button:active, .button:active { transform: scale(0.97); filter: brightness(0.9); }
 
-/* Base Input Styling */
+/* Input Styling */
 input[type="text"], input[type="number"], input[type="email"], input[type="password"], select, textarea {
-    transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 
-/* Style for the custom file input button (if used) */
-.custom-file-input::-webkit-file-upload-button {
-  visibility: hidden;
+/* Hide spinners from number inputs - more aggressive */
+input[type=number] {
+  -moz-appearance: textfield !important; /* Firefox */
+  appearance: textfield !important;
 }
-.custom-file-input::before {
-  content: 'Choose File';
-  display: inline-block;
-  background: #0ea5e9; /* sky-500 */
-  color: white;
-  border: none;
-  padding: 0.5rem 1rem;
-  border-radius: 0.375rem; /* rounded-md */
-  cursor: pointer;
-  font-weight: 500; /* medium */
-  margin-right: 0.5rem;
-}
-.custom-file-input:hover::before {
-  background: #0284c7; /* sky-600 */
+input[type=number]::-webkit-outer-spin-button,
+input[type=number]::-webkit-inner-spin-button {
+  -webkit-appearance: none !important;
+  margin: 0 !important;
+  display: none !important; /* Force hide */
 }
 
-/* Meal Energy Aura */
-.meal-aura {
-  transition: box-shadow 0.5s ease-in-out;
+
+/* Custom Scrollbar (reusable) */
+.custom-scrollbar::-webkit-scrollbar { width: 5px; height: 5px; }
+.custom-scrollbar::-webkit-scrollbar-track { background: rgba(51, 65, 85, 0.4); border-radius: 2.5px; }
+.custom-scrollbar::-webkit-scrollbar-thumb { background: #64748b; border-radius: 2.5px; }
+.custom-scrollbar::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+textarea.custom-scrollbar::-webkit-scrollbar { width: 6px; } /* Slightly wider for textareas */
+
+
+/* Weekly Planner Day Card Styling */
+.day-card {
+  transition: transform 0.2s ease-out, box-shadow 0.2s ease-out;
 }
-.meal-aura-low { /* Low calorie: cool blue */
-  box-shadow: 0 0 20px 0px rgba(59, 130, 246, 0.3); /* blue-500 */
+.day-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px -5px rgba(0,0,0,0.2);
 }
-.meal-aura-medium { /* Medium calorie: warm yellow/orange */
-  box-shadow: 0 0 22px 2px rgba(245, 158, 11, 0.35); /* amber-500 */
-}
-.meal-aura-high { /* High calorie: energetic red/deep orange */
-  box-shadow: 0 0 25px 4px rgba(239, 68, 68, 0.4); /* red-500 */
+.meal-assignments-list { /* For the list of meals within a day card */
+  /* Add specific styling if needed, like min-height or spacing */
 }
 
-/* Donut Chart Styling */
-.donut-chart-segment {
-  /* transition properties are now inline for dynamic delay */
-  transform-origin: center;
-}
-.donut-chart-text {
-  /* font-size, font-weight, fill are now inline for dynamic sizing */
-  text-anchor: middle;
-  /* dominant-baseline: central; /* Handled by dy for better cross-browser */
-  transition: opacity 0.3s ease-in-out;
-}
 
-.custom-scrollbar::-webkit-scrollbar {
-  width: 5px;
-  height: 5px;
-}
-.custom-scrollbar::-webkit-scrollbar-track {
-  background: rgba(51, 65, 85, 0.5); /* slate-700 with opacity */
-  border-radius: 2.5px;
-}
-.custom-scrollbar::-webkit-scrollbar-thumb {
-  background: #64748b; /* slate-500 */
-  border-radius: 2.5px;
-}
-.custom-scrollbar::-webkit-scrollbar-thumb:hover {
-  background: #94a3b8; /* slate-400 */
-}
+/* Meal Aura (might be less relevant now or used differently) */
+/* If MealComponent is mainly in a modal, this aura might not be on the primary "card" anymore */
+/* .meal-aura { transition: box-shadow 0.5s ease-in-out; }
+.meal-aura-low { box-shadow: 0 0 18px -2px rgba(59, 130, 246, 0.25); }
+.meal-aura-medium { box-shadow: 0 0 20px 0px rgba(245, 158, 11, 0.30); }
+.meal-aura-high { box-shadow: 0 0 22px 2px rgba(239, 68, 68, 0.35); } */
 
-/* Apply custom scrollbar to textareas too */
-textarea.custom-scrollbar::-webkit-scrollbar {
-  width: 6px;
-}
-textarea.custom-scrollbar::-webkit-scrollbar-track {
-  background: #1e293b; /* slate-800 */
-  border-radius: 3px;
-}
-textarea.custom-scrollbar::-webkit-scrollbar-thumb {
-  background: #475569; /* slate-600 */
-  border-radius: 3px;
-}
-textarea.custom-scrollbar::-webkit-scrollbar-thumb:hover {
-  background: #64748b; /* slate-500 */
-}
+
+/* Donut Chart Styling (remains useful for MealComponent) */
+.donut-chart-segment { transform-origin: center; }
+.donut-chart-text { text-anchor: middle; transition: opacity 0.3s ease-in-out; }
+
+/* Ensure custom scrollbar applies to any textarea elements */
+textarea.custom-scrollbar::-webkit-scrollbar-track { background: #1e293b; }
+textarea.custom-scrollbar::-webkit-scrollbar-thumb { background: #475569; }
+textarea.custom-scrollbar::-webkit-scrollbar-thumb:hover { background: #64748b; }

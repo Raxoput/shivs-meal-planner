@@ -116,4 +116,4 @@ const IngredientRowComponent: React.FC<IngredientRowProps> = ({ ingredient, onUp
     </tr>
   );
 }
-  export default IngredientRowComponent;
+export default IngredientRowComponent;

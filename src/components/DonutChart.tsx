@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState, useRef } from 'react';
 
 interface DonutChartProps {
@@ -7,7 +8,7 @@ interface DonutChartProps {
   totalCalories: number;
   size?: number;
   strokeWidth?: number;
-  showLegend?: boolean;
+  showLegend?: boolean; // New prop
 }
 
 interface Segment {
@@ -22,9 +23,9 @@ const DonutChart: React.FC<DonutChartProps> = ({
   carbs,
   fat,
   totalCalories,
-  size = 120, // Increased default size
-  strokeWidth = 16, // Adjusted stroke width
-  showLegend = true,
+  size = 120,
+  strokeWidth = 16,
+  showLegend = true, // Default to true
 }) => {
   const [mounted, setMounted] = useState(false);
   const [hoveredSegment, setHoveredSegment] = useState<Segment | null>(null);
@@ -75,7 +76,7 @@ const DonutChart: React.FC<DonutChartProps> = ({
 
   let accumulatedPercent = 0;
 
-  const handleMouseOver = (segment: Segment) => { // Removed 'event' parameter
+  const handleMouseOver = (segment: Segment) => {
     setHoveredSegment(segment);
   };
 
@@ -106,7 +107,7 @@ const DonutChart: React.FC<DonutChartProps> = ({
             return (
               <g
                 key={index}
-                onMouseOver={() => handleMouseOver(segment)} // Updated call
+                onMouseOver={() => handleMouseOver(segment)}
                 onMouseOut={handleMouseOut}
                 className="cursor-pointer"
                 role="presentation"
@@ -118,7 +119,7 @@ const DonutChart: React.FC<DonutChartProps> = ({
                   r={radius}
                   fill="transparent"
                   stroke={segment.color}
-                  strokeWidth={hoveredSegment === segment ? strokeWidth + 2 : strokeWidth} // Highlight effect
+                  strokeWidth={hoveredSegment === segment ? strokeWidth + 2 : strokeWidth}
                   strokeDasharray={circumference}
                   strokeDashoffset={mounted ? offset : circumference}
                   strokeLinecap="round"
@@ -155,9 +156,9 @@ const DonutChart: React.FC<DonutChartProps> = ({
           <div
             className="absolute p-2 bg-slate-800 text-white text-xs rounded-md shadow-lg pointer-events-none z-10 border border-slate-600"
             style={{
-                top: `calc(${svgRef.current.getBoundingClientRect().top + window.scrollY + size / 2 - 15}px)`, // Adjust for centering
-                left: `calc(${svgRef.current.getBoundingClientRect().left + window.scrollX + size / 2 - 30}px)`, // Adjust for centering
-                transform: 'translate(-50%, -50%)', // Center tooltip
+                top: `calc(${svgRef.current.getBoundingClientRect().top + window.scrollY + size / 2 - 15}px)`,
+                left: `calc(${svgRef.current.getBoundingClientRect().left + window.scrollX + size / 2 - 30}px)`,
+                transform: 'translate(-50%, -50%)',
             }}
             role="tooltip"
           >
@@ -166,7 +167,7 @@ const DonutChart: React.FC<DonutChartProps> = ({
         )}
 
       {showLegend && totalMacros > 0 && (
-        <div className="mt-3 space-y-1 text-xs w-full" aria-label="Macro legend">
+        <div className="mt-3 space-y-1 text-sm w-full" aria-label="Macro legend"> {/* Changed text-xs to text-sm */}
           {segmentsData.map((segment) => (
             segment.percent > 0 && (
               <div key={segment.label} className="flex items-center justify-between px-1">

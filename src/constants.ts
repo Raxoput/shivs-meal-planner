@@ -1,3 +1,4 @@
+
 export const USDA_API_KEY: string = 'SV7CMpXdfiKv01UstdMZnoOeohXgdrkrw2Y3zDnB'; // USDA API Key
 
 export const generateId = (): string => crypto.randomUUID();
@@ -19,11 +20,12 @@ export const parseServingSize = (servingString?: string): number | null => {
   return null;
 };
 
-export const DEFAULT_INITIAL_MEALS = [
+export const DEFAULT_INITIAL_MEALS = [ // This now defines default MealTemplates
   {
     id: generateId(),
-    name: 'My First Meal',
+    name: 'My First Meal Template',
     ingredients: [],
     createdAt: Date.now()
+    // isDetailsExpanded is no longer part of MealTemplate
   }
 ];

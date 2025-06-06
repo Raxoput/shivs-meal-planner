@@ -148,7 +148,7 @@ function App() {
         
         <div className="flex items-center justify-center mb-1">
           <ChefHat size={48} className="text-sky-400 mr-3" />
-          <h1 className="text-4xl md:text-5xl font-bold text-sky-400">Shiv's Meal Planner</h1>
+          <h1 className="text-4xl md:text-5xl font-bold text-sky-400">Shiv's Meal Planner V2</h1>
         </div>
         <p className="text-sm text-slate-400 text-center mb-3">Your personal meal planning assistant.</p>
         

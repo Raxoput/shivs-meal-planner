@@ -1,19 +1,23 @@
+// vite.config.ts - CORRECTED VERSION
+
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import path from 'path'
 
-// IMPORTANT: Replace '<YOUR_REPOSITORY_NAME>' with the actual name of your GitHub repository.
-// For example, if your repository URL is https://github.com/your-username/my-meal-planner,
-// then GITHUB_REPOSITORY_NAME should be 'my-meal-planner'.
+// This constant holds the name of your repository. This is correct.
 const GITHUB_REPOSITORY_NAME = 'shivs-meal-planner';
 
 export default defineConfig(({ command }) => {
-  const base = command === 'build' && GITHUB_REPOSITORY_NAME !== 'shivs-meal-planner'
-                 ? `/${shivs-meal-planner}/`
-                 : '/';
+  // CORRECTED AND SIMPLIFIED LOGIC:
+  // If the command is 'build' (for production), use the repository name as the base path.
+  // Otherwise (for 'serve' or local dev), use the root path '/'.
+  const base = command === 'build' 
+    ? `/${GITHUB_REPOSITORY_NAME}/` 
+    : '/';
+
   return {
     plugins: [react()],
-    base: base,
+    base: base, // Use the 'base' variable we just defined
     resolve: {
       alias: {
         '@': path.resolve(__dirname, './src')
@@ -23,7 +27,7 @@ export default defineConfig(({ command }) => {
       outDir: 'dist'
     },
     server: {
-      port: 3000 // Optional: specify a port for the dev server
+      port: 3000
     }
   }
 })

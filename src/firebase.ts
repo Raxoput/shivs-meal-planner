@@ -1,17 +1,17 @@
-// src/firebase.ts - Reverted back to the secure version
-
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
 
-// Your web app's Firebase configuration, using environment variables
+// --- TEMPORARY DIAGNOSTIC CONFIGURATION ---
+// We are hard-coding the keys to test if the environment variables are the problem.
+// Go to your .env file and copy the values directly here.
 const firebaseConfig = {
-  apiKey: import.meta.env.VITE_API_KEY,
-  authDomain: import.meta.env.VITE_AUTH_DOMAIN,
-  projectId: import.meta.env.VITE_PROJECT_ID,
-  storageBucket: import.meta.env.VITE_STORAGE_BUCKET,
-  messagingSenderId: import.meta.env.VITE_MESSAGING_SENDER_ID,
-  appId: import.meta.env.VITE_APP_ID,
+  apiKey: "AIzaSyAQkJO9WgtZRH3OQ_QxaICpYEy_4S-uHBI", // e.g., "AIzaSy..."
+  authDomain: "shivs-meal-planner-f571f.firebaseapp.com", // e.g., "shivs-meal-planner-f571f.firebaseapp.com"
+  projectId: "shivs-meal-planner-f571f", // e.g., "shivs-meal-planner-f571f"
+  storageBucket: "shivs-meal-planner-f571f.firebasestorage.app",
+  messagingSenderId: "1087771620132",
+  appId: "1:1087771620132:web:fb107f419b72d186f1b9b1",
 };
 
 // Initialize Firebase
